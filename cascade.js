@@ -2,8 +2,8 @@
 // Уважает «уменьшить движение». Применяется к пунктам меню, кнопкам и ссылкам подвала.
 (function () {
   if (!window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const SEL = ['#gnav .nav a', '#gnav .nav-button > span:first-child', '.hero__button > span:first-child', '.mosaic__button > span:first-child', '.footer__col a', '.dash__reset'];
-  const FROM = { '.mosaic__button > span:first-child': 'center', '.hero__button > span:first-child': 'center', '#gnav .nav-button > span:first-child': 'center' };
+  const SEL = ['#gnav .nav a', '#gnav .nav-button > span:first-child', '.hero__button > span:first-child', '.mosaic__button > span:first-child', '.cta__dark > span:first-child', '.cta__glass > span:first-child', '.footer__col a', '.dash__reset'];
+  const FROM = { '.mosaic__button > span:first-child': 'center', '.cta__dark > span:first-child': 'center', '.cta__glass > span:first-child': 'center', '.hero__button > span:first-child': 'center', '#gnav .nav-button > span:first-child': 'center' };
   SEL.forEach((sel) => document.querySelectorAll(sel).forEach((el) => {
     const text = el.textContent.trim(); if (!text) return;
     const from = FROM[sel] || 'start';
