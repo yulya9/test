@@ -300,7 +300,7 @@ if (renderer) {
     // место: стоит на нижнем краю экрана (рамки) по центру под картинкой, как на полу; при расширении картинки остаётся на месте
     const sr = slot.getBoundingClientRect();
     const u = sr.width / 380 || 1, CH = 150 * u;
-    const px = sr.left - br.left + sr.width / 2, py = H - 14 * u;   // py: уровень ног
+    const px = sr.left - br.left + sr.width / 2, py = H - 40 * u;   // py: уровень ног (выше нижнего края холста, чтобы не резалась тень)
     rob = { x: br.left + px, y: br.top + py, CH };
     shadow.position.set((px - W / 2) * S, (H / 2 - py) * S - 0.02, 0); shadow.scale.setScalar(CH * S * appear * 0.62);
     appear += (1 - appear) * Math.min(1, dt * 3);
