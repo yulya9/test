@@ -38,7 +38,7 @@ img { display: block; }
 /* Header 497:31 */
 .header { display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; width: calc(996 * var(--u)); max-width: 100%; padding: calc(8 * var(--u)) calc(8 * var(--u)) calc(8 * var(--u)) calc(20 * var(--u)); overflow: clip; border-radius: 100px; background: var(--white); }
 .logo { display: flex; align-items: center; gap: calc(10 * var(--u)); flex-shrink: 0; overflow: clip; }
-.logo__mark { width: calc(24 * var(--u)); height: calc(24 * var(--u)); flex-shrink: 0; border-radius: calc(8 * var(--u)); background: var(--logo-mark); }
+.logo__mark { width: calc(24 * var(--u)); height: calc(24 * var(--u)); flex-shrink: 0; display: block; }
 .logo__text { font-weight: 500; font-size: calc(14 * var(--u)); line-height: 1.3; white-space: nowrap; color: var(--ink); }
 .nav { display: flex; align-items: center; gap: calc(32 * var(--u)); flex-shrink: 0; overflow: clip; font-weight: 400; font-size: calc(14 * var(--u)); line-height: 1.3; white-space: nowrap; color: var(--ink); }
 .nav-button { display: flex; align-items: center; gap: calc(8 * var(--u)); flex-shrink: 0; padding: calc(6 * var(--u)) calc(16 * var(--u)); overflow: clip; border-radius: 100px; background: var(--blue); color: var(--white); font-weight: 400; font-size: calc(14 * var(--u)); line-height: 1.3; white-space: nowrap; }
