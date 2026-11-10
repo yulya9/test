@@ -386,3 +386,8 @@ img { display: block; }
 @media (max-width: 860px) { .signup { align-items: end; padding: 0; } .signup__card { width: 100%; padding: 28px 20px 24px; border-radius: 28px 28px 0 0; } .signup__title { font-size: 24px; } }
 @media (prefers-reduced-motion: reduce) { .signup, .signup__card { transition: none; } }
 .signup__form[hidden], .signup__done[hidden] { display: none; }
+
+/* Ховер без внешнего свечения: оно обрезалось родителями с overflow и давало квадратный угол */
+.nav-button:hover, .hero__button:hover, .cta__dark:hover, .mosaic__button:hover { box-shadow: none; }
+.nav-button:hover { box-shadow: inset 0 0 0 1.5px var(--blue); }
+.cta__glass:hover { box-shadow: inset 0 0 0 1px rgba(0, 140, 255, 0.5); }
