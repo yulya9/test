@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pace: настольный робот, который напоминает про воду и паузы</title>
+<meta name="description" content="Pace: настольный робот и приложение напоминают про воду, паузы и фокус. Не медицинский продукт.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero_sky.jpg" fetchpriority="high">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Фиксированная шапка. Активный пункт выделяется только цветом -->
+<header class="header gnav" id="gnav">
+  <a class="logo" href="#hero"><span class="logo__mark" aria-hidden="true"></span><span class="logo__text">Pace</span></a>
+  <nav class="nav" aria-label="Основная навигация">
+    <a href="#scenes">Сцены дня</a>
+    <a href="#features">Возможности</a>
+    <a href="#demo">Демо</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#faq">Вопросы</a>
+  </nav>
+  <a class="nav-button" href="#demo"><span>Попробовать</span><span class="nav-button__arrow" aria-hidden="true">→</span></a>
+</header>
+
+<!-- HeroSection · Figma 497:29 -->
+<div class="hero-wrap" id="hero-wrap">
+<section class="hero" id="hero">
+  <div class="hero__box">
+
+    <header class="header header--ph" aria-hidden="true" inert>
+      <a class="logo" href="#hero">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Pace</span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#scenes">Сцены дня</a>
+        <a href="#features">Возможности</a>
+        <a href="#demo">Демо</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <a class="nav-button" href="#demo"><span>Попробовать</span><span class="nav-button__arrow" aria-hidden="true">→</span></a>
+    </header>
+
+    <div class="hero__card" aria-hidden="true"><img src="assets/hero_sky.jpg" alt=""><span class="hero__tint"></span></div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span>Робот на столе напомнит</span>
+        <span class="hero__title-accent">выпить воды и отдохнуть</span>
+      </h1>
+
+      <div class="hero__row">
+        <div class="hero__stat">
+          <p class="hero__stat-value">7 мин</p>
+          <p class="hero__stat-label">на настройку</p>
+        </div>
+        <img class="hero__img" src="assets/hero_sky.jpg" alt="" width="380" height="214" fetchpriority="high" decoding="async">
+        <div class="hero__right">
+          <p class="hero__text">Напоминает про воду, паузы и конец рабочего дня</p>
+          <a class="hero__button" href="#features"><span>Что он умеет</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- WhatSection · Figma 498:3 -->
+<section class="what" id="what">
+  <div class="what__inner">
+    <div class="manifesto">
+      <div class="manifesto__left">
+        <div class="stats">
+          <div class="stat"><p class="stat__value">5</p><p class="stat__label">сцен дня</p></div>
+          <div class="stat"><p class="stat__value">4</p><p class="stat__label">возможности</p></div>
+          <div class="stat"><p class="stat__value">1</p><p class="stat__label">робот вместо уведомлений</p></div>
+        </div>
+      </div>
+      <div class="manifesto__right">
+        <p class="manifesto__text">Pace — это робот на столе и приложение. Он подсказывает, когда выпить воды, размяться и закончить работу. Без оценок и счётчиков пропусков</p>
+        <div class="mosaic">
+          <a class="mosaic__button" href="#features"><span>Смотреть возможности</span><span aria-hidden="true">→</span></a>
+          <img class="mosaic__img" style="--x:412;--y:0;--s:125" src="assets/n_drop.jpg" alt="">
+          <img class="mosaic__img" style="--x:686;--y:0;--s:126" src="assets/n_hourglass.jpg" alt="">
+          <img class="mosaic__img" style="--x:961;--y:0;--s:125" src="assets/n_leaf.jpg" alt="">
+          <img class="mosaic__img" style="--x:686;--y:140;--s:126" src="assets/n_tea.jpg" alt="">
+          <img class="mosaic__img" style="--x:0;--y:280;--s:126" src="assets/n_lotus.jpg" alt="">
+          <img class="mosaic__img" style="--x:138;--y:280;--s:125" src="assets/n_sun.jpg" alt="">
+          <img class="mosaic__img" style="--x:961;--y:280;--s:125" src="assets/n_moon.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<!-- FeaturesInner · Figma 499:40, карточка по образцу 499:123 -->
+<section class="features" id="features">
+  <h2 class="features__title">Что делает робот</h2>
+  <div class="deck">
+    <div class="fblock" style="--t:16;--mb:292;--p:58.8"><article class="fcard">
+      <img class="fcard__img" src="assets/k_bell.jpg" alt="" width="1792" height="768" loading="lazy">
+      <div class="fcard__header"><span class="fcard__index">[01]</span><h3 class="fcard__title">Напоминания</h3></div>
+      <p class="fcard__text">Скажет выпить воды и встать, один раз</p>
+    </article></div>
+    <div class="fblock" style="--t:104;--mb:204;--p:54.1"><article class="fcard">
+      <img class="fcard__img" src="assets/k_steps.jpg" alt="" width="1792" height="768" loading="lazy">
+      <div class="fcard__header"><span class="fcard__index">[02]</span><h3 class="fcard__title">Привычки</h3></div>
+      <p class="fcard__text">По одной маленькой привычке. Пропуск не страшен</p>
+    </article></div>
+    <div class="fblock" style="--t:196;--mb:112;--p:50"><article class="fcard">
+      <img class="fcard__img" src="assets/k_ring.jpg" alt="" width="1792" height="768" loading="lazy">
+      <div class="fcard__header"><span class="fcard__index">[03]</span><h3 class="fcard__title">Фокус</h3></div>
+      <p class="fcard__text">Тихо светится, пока идёт рабочий блок</p>
+    </article></div>
+    <div class="fblock" style="--t:308;--mb:0;--p:40"><article class="fcard">
+      <img class="fcard__img" src="assets/k_cloud.jpg" alt="" width="1792" height="768" loading="lazy">
+      <div class="fcard__header"><span class="fcard__index">[04]</span><h3 class="fcard__title">Пауза</h3></div>
+      <p class="fcard__text">Через два часа предложит три минуты отдыха</p>
+    </article></div>
+  </div>
+</section>
+
+<!-- StepsSection · Figma 500:69. На тёмной панели три плавающие картинки, как в макете -->
+<section class="steps" id="steps">
+  <div class="steps__box">
+    <div class="steps__field" id="stepsField" aria-hidden="true"></div>
+    <div class="steps__title"><p>Три шага к <span class="steps__accent">спокойному ритму</span></p></div>
+    <div class="steps__list">
+      <div class="step"><div class="step__label"><span class="step__dot" aria-hidden="true"></span><p>Шаг 1</p></div><p class="step__title">Расскажите о своём дне</p><p class="step__text">Когда вы встаёте, работаете, отдыхаете. Это займёт пару минут.</p></div>
+      <div class="step"><div class="step__label"><span class="step__dot" aria-hidden="true"></span><p>Шаг 2</p></div><p class="step__title">Выберите, о чём напоминать</p><p class="step__text">Вода, паузы, фокус, вечер. Только то, что нужно вам.</p></div>
+      <div class="step"><div class="step__label"><span class="step__dot" aria-hidden="true"></span><p>Шаг 3</p></div><p class="step__title">Живите в своём ритме</p><p class="step__text">Помощник подсказывает и радуется, а вы делаете по-своему.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DemoSection · Figma 500:2. Список дел слева, итог дня справа. Графики на ECharts. Один акцент, без наград и уровней -->
+<section class="demo" id="demo">
+  <div class="demo__box">
+    <div class="demo__inner">
+      <div class="demo__left">
+        <h2 class="demo__title"><span>Попробуйте</span><span class="demo__accent">свой день</span></h2>
+        <p class="demo__lead">Отметьте, что уже сделали сегодня. День на круге заполнится цветом, а помощник подскажет, что дальше.</p>
+        <div class="demo__tasks" role="group" aria-label="Дела на сегодня"><button class="task" type="button" data-t="water" aria-pressed="false"><span class="task__box"><svg viewBox="0 0 26 26" aria-hidden="true"><circle class="task__ring" cx="13" cy="13" r="12" /><path class="task__tick" d="M7.5 13.5l3.6 3.6 7.4-7.6" /></svg></span><span class="task__label">Стакан воды</span></button><button class="task" type="button" data-t="quiet" aria-pressed="false"><span class="task__box"><svg viewBox="0 0 26 26" aria-hidden="true"><circle class="task__ring" cx="13" cy="13" r="12" /><path class="task__tick" d="M7.5 13.5l3.6 3.6 7.4-7.6" /></svg></span><span class="task__label">Пять минут тишины</span></button><button class="task" type="button" data-t="walk" aria-pressed="false"><span class="task__box"><svg viewBox="0 0 26 26" aria-hidden="true"><circle class="task__ring" cx="13" cy="13" r="12" /><path class="task__tick" d="M7.5 13.5l3.6 3.6 7.4-7.6" /></svg></span><span class="task__label">Прогулка</span></button><button class="task" type="button" data-t="plan" aria-pressed="false"><span class="task__box"><svg viewBox="0 0 26 26" aria-hidden="true"><circle class="task__ring" cx="13" cy="13" r="12" /><path class="task__tick" d="M7.5 13.5l3.6 3.6 7.4-7.6" /></svg></span><span class="task__label">План на завтра</span></button><button class="task" type="button" data-t="phone" aria-pressed="false"><span class="task__box"><svg viewBox="0 0 26 26" aria-hidden="true"><circle class="task__ring" cx="13" cy="13" r="12" /><path class="task__tick" d="M7.5 13.5l3.6 3.6 7.4-7.6" /></svg></span><span class="task__label">Телефон отложен на вечер</span></button></div>
+      </div>
+      <div class="dash" aria-live="polite">
+        <div class="dash__top">
+          <div class="wheel" id="dWheel" aria-hidden="true"><span class="wheel__v" id="dPct">0%</span></div>
+          <div class="dash__side">
+            <p class="dash__label">Сегодня</p>
+            <p class="dash__big"><span id="dCount">0</span> из 5</p>
+            <ul class="legend" aria-hidden="true"><li data-t="water" style="--c:#008cff"><i></i><span>Стакан воды</span><b>08:00</b></li><li data-t="quiet" style="--c:#8f7be3"><i></i><span>Тишина</span><b>11:00</b></li><li data-t="walk" style="--c:#ff8a5c"><i></i><span>Прогулка</span><b>14:00</b></li><li data-t="plan" style="--c:#ffbf3f"><i></i><span>План на завтра</span><b>18:00</b></li><li data-t="phone" style="--c:#38c6e8"><i></i><span>Телефон в сторону</span><b>21:00</b></li></ul>
+          </div>
+        </div>
+        <div class="dash__bottom"><div class="demo__bot" id="demoBot" aria-hidden="true"></div><div class="say"><span class="say__dot" aria-hidden="true"></span><p id="dSay">Начнём с одного дела. Любого.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ReviewsSection: тёмная панель с акцентным фоном, фото и карточки едут вместе при скролле (как у novaform) -->
+<section class="reviews" id="reviews">
+  <div class="reviews__box">
+    <img class="reviews__bg" src="assets/rv_bg.jpg" alt="" aria-hidden="true">
+    <div class="reviews__head">
+      <h2 class="reviews__title">Что говорят пользователи</h2>
+    </div>
+    <div class="rv">
+      <div class="rv__track">
+        <div class="rv__col rv__tiles"><div class="rv__tile"><img src="assets/p_1.jpg" alt=""></div><div class="rv__tile"><img src="assets/p_2.jpg" alt=""></div><div class="rv__tile"><img src="assets/p_3.jpg" alt=""></div><div class="rv__tile"><img src="assets/p_4.jpg" alt=""></div><div class="rv__tile"><img src="assets/p_5.jpg" alt=""></div></div>
+        <div class="rv__col rv__dots"><i class="rv__dot"></i><i class="rv__dot"></i><i class="rv__dot"></i><i class="rv__dot"></i><i class="rv__dot"></i></div>
+        <div class="rv__col rv__cards"><article class="rv__card"><div class="rv__top"><div><p class="rv__name">Аня</p><p class="rv__role">дизайнер, работает из дома</p></div><p class="rv__stars" aria-label="5 из 5">★★★★★</p></div><p class="rv__quote">«Раньше я забывала про обед до трёх часов. Теперь Pace тихо напоминает про паузу. День стал ровнее.»</p></article><article class="rv__card"><div class="rv__top"><div><p class="rv__name">Миша</p><p class="rv__role">студент</p></div><p class="rv__stars" aria-label="5 из 5">★★★★★</p></div><p class="rv__quote">«Фокус-таймер работает лучше приложений: телефон лежит в стороне, а робот светится, пока я учусь.»</p></article><article class="rv__card"><div class="rv__top"><div><p class="rv__name">Катя</p><p class="rv__role">фрилансер</p></div><p class="rv__stars" aria-label="5 из 5">★★★★★</p></div><p class="rv__quote">«Утренний ритуал с водой и планом занимает пять минут, и робот радуется.»</p></article><article class="rv__card"><div class="rv__top"><div><p class="rv__name">Олег</p><p class="rv__role">разработчик</p></div><p class="rv__stars" aria-label="5 из 5">★★★★★</p></div><p class="rv__quote">«Раз в два часа он предлагает размяться. Не давит, поэтому я его слушаю.»</p></article><article class="rv__card"><div class="rv__top"><div><p class="rv__name">Ира</p><p class="rv__role">преподаватель</p></div><p class="rv__stars" aria-label="5 из 5">★★★★★</p></div><p class="rv__quote">«Вечером робот напоминает отложить телефон. Я стала раньше ложиться.»</p></article></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CtaSection: светлая концовка в стиле сайта: перламутровое небо медленно плывёт, сверху и снизу переход в белое -->
+<section class="cta" id="cta">
+  <div class="cta__bg" aria-hidden="true"><img class="cta__sky cta__sky--a" src="assets/hero_sky.jpg" alt=""><img class="cta__sky cta__sky--b" src="assets/hero_sky.jpg" alt=""></div>
+  <div class="cta__fade cta__fade--top" aria-hidden="true"></div>
+  <div class="cta__fade cta__fade--bottom" aria-hidden="true"></div>
+  <div class="cta__content">
+    <h2 class="cta__title">Начните с одного шага, остальное возьмёт ритм</h2>
+    <p class="cta__text">Подключите помощника сегодня: он подстроится под ваш день, напомнит о важном и поддержит, когда нужна пауза.</p>
+    <div class="cta__buttons">
+      <a class="cta__dark" href="#features"><span>Что он умеет</span><span aria-hidden="true">→</span></a>
+      <a class="cta__glass" href="#demo"><span>Попробовать день</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer · Figma 500:164. По верхнему краю идёт робот, иногда останавливается и машет -->
+<footer class="footer" id="footer">
+  <div class="footer__walk" aria-hidden="true"></div>
+  <div class="footer__top">
+    <div class="footer__brand">
+      <p class="footer__logo">Pace</p>
+      <p class="footer__note">Настольный робот и приложение для спокойного ритма дня: вода, паузы, фокус и вечер.</p>
+    </div>
+    <div class="footer__col"><p class="footer__label">Продукт</p><a href="#what">Сцены дня</a><a href="#features">Возможности</a><a href="#demo">Попробовать</a><a href="#steps">Как это работает</a></div>
+    <div class="footer__col"><p class="footer__label">Помощь</p><a href="#faq">Вопросы</a><a href="#reviews">Отзывы</a><a href="mailto:hello@pace.app">hello@pace.app</a></div>
+    <div class="footer__col"><p class="footer__label">Мы на связи</p><a href="#">Telegram</a><a href="#">VK</a><a href="#">YouTube</a></div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2026 Pace</p>
+    <p class="footer__legal">Pace не медицинское изделие и не заменяет консультацию врача.</p>
+    <nav><a href="#">Политика конфиденциальности</a><a href="#">Условия использования</a></nav>
+  </div>
+</footer>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+// Помощник на первом экране: стоит на нижнем левом углу картинки (едет вместе с ней при расширении), следит за курсором, моргает, один раз машет.
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const box = document.querySelector('.hero__box'), card = document.querySelector('.hero__card'), slot = document.querySelector('.hero__img');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const canvas = document.createElement('canvas'); canvas.className = 'hero__robot'; canvas.setAttribute('aria-hidden', 'true'); box.appendChild(canvas);
+
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { canvas.remove(); renderer = null; }
+if (renderer) {
+  const scene = new THREE.Scene(), Z = 12, camera = new THREE.PerspectiveCamera(40, 1, 0.1, 80); camera.position.set(0, 0, Z);
+  const actor = new THREE.Group(), facing = new THREE.Group(); scene.add(actor); actor.add(facing); facing.rotation.y = -Math.PI / 2;
+  const bones = {}, eyes = []; let ready = false, tipGlow = null;
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); renderer.setClearColor(0x000000, 0);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
+  (function () {
+    const env = new THREE.Scene();
+    env.add(new THREE.Mesh(new THREE.BoxGeometry(30, 30, 30), new THREE.MeshBasicMaterial({ color: 0xb9b5cf, side: THREE.BackSide })));
+    [[0xffffff, [0, 12, 2], [14, 0.5, 8]], [0xff8fe0, [-11, 2, 4], [0.5, 9, 9]], [0x7ff0ff, [11, 0, 3], [0.5, 9, 9]], [0xb79cff, [0, -10, 4], [16, 0.5, 8]], [0xfff0a8, [0, 3, -12], [14, 9, 0.5]], [0xffffff, [4, 2, 12], [8, 6, 0.5]]]
+      .forEach(([c, p, s]) => { const m = new THREE.Mesh(new THREE.BoxGeometry(...s), new THREE.MeshBasicMaterial({ color: c })); m.position.set(...p); env.add(m); });
+    const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(env, 0.02).texture; pm.dispose();
+  })();
+  const loadGlb = () => new Promise((res, rej) => { if (window.RITM_GLB) return res(); const s = document.createElement('script'); s.src = 'assets/robot-glb.js'; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+  loadGlb().then(() => {
+    const bin = atob(window.RITM_GLB), u8 = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    new GLTFLoader().parse(u8.buffer, '', (gltf) => {
+      const model = gltf.scene; model.position.y = 0.5;
+      model.traverse((n) => { if (n.isBone) bones[n.name] = n;
+        if (n.isSkinnedMesh) { n.frustumCulled = false; const old = n.material;
+          n.material = new THREE.MeshPhysicalMaterial({ map: old.map, color: 0xffffff, metalness: 0.2, roughness: 0.25, iridescence: 1.0, iridescenceIOR: 1.6, iridescenceThicknessRange: [250, 700], clearcoat: 0.6, clearcoatRoughness: 0.15, envMapIntensity: 1.4 });
+          if (n.material.map) n.material.map.colorSpace = THREE.SRGBColorSpace; } });
+      if (bones.head) {
+        const NECK = -0.075, FX = 0.232, face = new THREE.Group(); face.position.set(0, -NECK, 0); bones.head.add(face);
+        const rrect = (w, h, r) => { const s = new THREE.Shape(), x = -w / 2, y = -h / 2; s.moveTo(x + r, y); s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r); s.lineTo(x + w, y + h - r); s.quadraticCurveTo(x + w, y + h, x + w - r, y + h); s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r); s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y); return new THREE.ShapeGeometry(s); };
+        const panel = new THREE.Mesh(rrect(0.40, 0.31, 0.05), new THREE.MeshPhysicalMaterial({ color: 0x040509, roughness: 0.12, metalness: 0, clearcoat: 0.8, clearcoatRoughness: 0.08, envMapIntensity: 0.35 }));
+        panel.rotation.y = Math.PI / 2; panel.position.set(FX, 0.155, 0); face.add(panel);
+        const mk = (stops, size = 128) => { const c = document.createElement('canvas'); c.width = c.height = size; const x = c.getContext('2d'), g = x.createRadialGradient(size / 2, size / 2, 4, size / 2, size / 2, size / 2 - 2); stops.forEach(([o, col]) => g.addColorStop(o, col)); x.fillStyle = g; x.fillRect(0, 0, size, size); return new THREE.CanvasTexture(c); };
+        const glowTex = mk([[0, 'rgba(120,255,225,0.85)'], [0.35, 'rgba(94,242,208,0.35)'], [1, 'rgba(94,242,208,0)']]);
+        const eyeTex = mk([[0, 'rgba(235,255,250,1)'], [0.6, 'rgba(140,248,225,1)'], [0.9, 'rgba(94,242,208,0.9)'], [1, 'rgba(94,242,208,0)']]);
+        const heartTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); const g = x.createRadialGradient(64, 56, 6, 64, 64, 62); g.addColorStop(0, '#fff0f6'); g.addColorStop(0.55, '#ff9ccc'); g.addColorStop(1, 'rgba(255,120,180,0)');
+          x.fillStyle = g; x.beginPath(); x.moveTo(64, 104); x.bezierCurveTo(8, 66, 20, 18, 64, 44); x.bezierCurveTo(108, 18, 120, 66, 64, 104); x.fill(); return new THREE.CanvasTexture(c); })();
+        const EY = 0.165, EZ = 0.108;
+        [-1, 1].forEach((s) => { const g = new THREE.Group(); g.position.set(0, EY, s * EZ); face.add(g);
+          const disc = new THREE.Mesh(new THREE.CircleGeometry(0.05, 48), new THREE.MeshBasicMaterial({ map: eyeTex, transparent: true, depthWrite: false, toneMapped: false })); disc.rotation.y = Math.PI / 2; disc.position.x = FX + 0.003; g.add(disc);
+          const hl = new THREE.Mesh(new THREE.CircleGeometry(0.011, 20), new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false })); hl.rotation.y = Math.PI / 2; hl.position.set(FX + 0.0045, 0.017, 0.016); g.add(hl);
+          const halo = new THREE.Mesh(new THREE.CircleGeometry(0.115, 32), new THREE.MeshBasicMaterial({ map: glowTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false })); halo.rotation.y = Math.PI / 2; halo.position.x = FX + 0.0015; g.add(halo);
+          eyes.push({ g, y0: EY, z0: s * EZ, halo, disc, hl, tex: eyeTex, heartTex }); });
+        const mg = new THREE.TorusGeometry(0.034, 0.0065, 8, 28, Math.PI); mg.rotateZ(Math.PI);
+        const mouth = new THREE.Mesh(mg, new THREE.MeshBasicMaterial({ color: 0x9ff8e6, toneMapped: false })); mouth.rotation.y = Math.PI / 2; mouth.position.set(FX + 0.003, 0.118, 0); face.add(mouth); eyes.mouth = mouth;
+        if (bones.antenna) { tipGlow = new THREE.Mesh(new THREE.SphereGeometry(0.016, 20, 14), new THREE.MeshBasicMaterial({ color: 0x9ff8e6, toneMapped: false })); tipGlow.position.set(0, 0.062, 0); bones.antenna.add(tipGlow); }
+      }
+      facing.add(model); ready = true;
+    }, () => canvas.remove());
+  }, () => canvas.remove());
+
+  // мягкая тень под ногами
+  const shadow = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 4, 64, 64, 62); g.addColorStop(0, 'rgba(40,60,110,0.34)'); g.addColorStop(1, 'rgba(40,60,110,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128);
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(2, 0.5), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false })); m.position.z = -0.5; scene.add(m); return m; })();
+  let W = 1, H = 1, S = 1;
+  const resize = () => { W = box.clientWidth; H = box.clientHeight; renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix(); S = 2 * Math.tan(THREE.MathUtils.degToRad(20)) * Z / H; };
+  new ResizeObserver(resize).observe(box); resize();
+  const mouse = { x: 0, y: 0, on: false, last: 0 };
+  addEventListener('pointermove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.on = true; mouse.last = performance.now(); });
+
+  let lookX = 0, lookY = 0, blink = 0, nextBlink = 2.5, last = performance.now(), t0 = last, wave = -1, waved = false, appear = 0;
+  // клик по роботу: по очереди прыжок, танец, кручение, сердечки в глазах
+  const ACTS = [['jump', 2.4], ['dance', 3.4], ['spin', 2.4], ['heart', 3.4]];
+  let actI = 0, act = null, rob = null, heartOn = false;
+  const ease = (v) => v * v * (3 - 2 * v), mix = (a, b, w) => a + (b - a) * w;
+  const hit = (e) => { if (!rob) return false; const br = box.getBoundingClientRect(); if (e.clientY < br.top || e.clientY > br.bottom) return false; return Math.abs(e.clientX - rob.x) < rob.CH * 0.42 && e.clientY > rob.y - rob.CH * 1.02 && e.clientY < rob.y + 12; };
+  addEventListener('pointerdown', (e) => { if (reduce || !hit(e)) return; const [name, dur] = ACTS[actI % ACTS.length]; actI++; act = { name, dur, t0: performance.now() }; });
+  addEventListener('pointermove', (e) => { box.style.cursor = hit(e) ? 'pointer' : ''; });
+  const frame = (now) => {
+    requestAnimationFrame(frame);
+    const br = box.getBoundingClientRect();
+    if (!ready || document.hidden || br.bottom < 0 || br.top > innerHeight) { last = now; return; }
+    const dt = Math.min(0.05, (now - last) / 1000), t = (now - t0) / 1000; last = now;
+    // место: стоит на нижнем краю экрана (рамки) по центру под картинкой, как на полу; при расширении картинки остаётся на месте
+    const sr = slot.getBoundingClientRect();
+    const u = sr.width / 380 || 1, CH = 150 * u;
+    const px = sr.left - br.left + sr.width / 2, py = H - 14 * u;   // py: уровень ног
+    rob = { x: br.left + px, y: br.top + py, CH };
+    shadow.position.set((px - W / 2) * S, (H / 2 - py) * S - 0.02, 0); shadow.scale.setScalar(CH * S * appear * 0.62);
+    appear += (1 - appear) * Math.min(1, dt * 3);
+    actor.visible = appear > 0.02; actor.scale.setScalar(Math.max(0.0001, CH * S * appear));
+    actor.position.set((px - W / 2) * S, (H / 2 - py) * S, 0);
+    // взгляд
+    const cx = br.left + px, cy = br.top + py - CH * 0.6, idle = !mouse.on || performance.now() - mouse.last > 3500;
+    const gx = idle ? cx + Math.sin(t * 0.8) * 320 : mouse.x, gy = idle ? cy - 40 : mouse.y;
+    lookX += (clamp((gx - cx) / (innerWidth * 0.35), -1, 1) - lookX) * 0.12; lookY += (clamp(-(gy - cy) / (innerHeight * 0.35), -1, 1) - lookY) * 0.12;
+    // приветствие: один раз машет рукой через две секунды
+    if (!waved && !reduce && t > 2) { waved = true; wave = 0; }
+    let aL = 0; if (wave >= 0) { wave += dt; const env = Math.sin(Math.PI * Math.min(1, wave / 1.8)); aL = -(1.15 + Math.sin(t * 13) * 0.3) * Math.min(1, env * 2.2); if (wave > 1.8) wave = -1; }
+    facing.rotation.y = -Math.PI / 2 + lookX * 0.25;
+    const sq = reduce ? 0 : Math.sin(t * 1.7) * 0.012; facing.scale.set(1 - sq * 0.6, 1 + sq, 1 - sq * 0.6);
+    const { head, antenna, armL, armR } = bones;
+    if (head) { head.rotation.y = clamp(lookX * 0.7, -0.8, 0.8); head.rotation.z = clamp(lookY * 0.3, -0.5, 0.4); }
+    if (antenna && !reduce) { antenna.rotation.z = Math.sin(t * 2.4) * 0.12; antenna.rotation.x = Math.cos(t * 1.9) * 0.1; }
+    if (armL) armL.rotation.x = aL; if (armR) armR.rotation.x = Math.sin(t * 1.5) * 0.02;
+    nextBlink -= dt; if (nextBlink < 0) { blink = 1; nextBlink = 2 + Math.random() * 3; } blink = Math.max(0, blink - dt * 7);
+    const lid = Math.max(0.05, 1 - Math.sin(blink * Math.PI) * 0.9), glad = wave >= 0 ? 1.1 : 1;
+    eyes.forEach((e) => { e.g.position.z = e.z0 - lookX * 0.03; e.g.position.y = e.y0 + lookY * 0.022; e.g.scale.set(1, lid * glad, glad); e.halo.material.opacity = 0.8 + Math.sin(t * 2.2) * 0.05; });
+    if (eyes.mouth) eyes.mouth.scale.set(1, glad, 1);
+    if (tipGlow) tipGlow.material.color.setRGB(0.6, 0.92, 0.82);
+    let wantHeart = false;
+    if (act) {
+      const au = (performance.now() - act.t0) / 1000;
+      if (au > act.dur) act = null;
+      else {
+        const w = Math.max(0, Math.min(1, au / 0.25, (act.dur - au) / 0.3));
+        let hop = 0, ry = 0, rz = 0, lx = null, rx = null, hy = null, hz = null, sqv = 0;
+        if (act.name === 'jump') { const j = (n) => Math.max(0, Math.sin(Math.min(1, Math.max(0, (au - 0.2 - n * 0.95) / 0.85)) * Math.PI)); const air = Math.max(j(0), j(1)); hop = air * 0.3; lx = -air * 1.6; rx = air * 1.6; sqv = ((au < 0.25 || (au > 0.95 && au < 1.2)) ? -0.07 : 0) + air * 0.04; }
+        else if (act.name === 'dance') { const b = Math.sin(au * 7); rz = b * 0.18; hop = Math.abs(b) * 0.05; lx = -1.3 - b * 0.6; rx = 1.3 - b * 0.6; hy = Math.sin(au * 3.5) * 0.4; ry = Math.sin(au * 1.7) * 0.5; }
+        else if (act.name === 'spin') { const f = Math.min(1, Math.max(0, (au - 0.3) / 1.6)); ry = 2 * Math.PI * ease(f); lx = -1.3; rx = 1.3; hop = Math.sin(f * Math.PI) * 0.04; }
+        else if (act.name === 'heart') { const b = Math.max(0, Math.sin(au * 7)); wantHeart = au > 0.3 && au < act.dur - 0.3; hz = Math.sin(au * 3.5) * 0.12; hop = b * 0.03; sqv = b * 0.02; lx = -0.35; rx = 0.35; }
+        actor.position.y += hop * w * CH * S * appear;
+        facing.rotation.y += ry * (act.name === 'spin' ? 1 : w); facing.rotation.z = rz * w;
+        if (lx != null && armL) armL.rotation.x = mix(armL.rotation.x, lx, w); if (rx != null && armR) armR.rotation.x = mix(armR.rotation.x, rx, w);
+        if (hy != null && head) head.rotation.y = mix(head.rotation.y, hy, w); if (hz != null && head) head.rotation.z = mix(head.rotation.z, hz, w);
+        if (sqv) { const s2 = sq + sqv * w; facing.scale.set(1 - s2 * 0.6, 1 + s2, 1 - s2 * 0.6); }
+        if (wantHeart) { const beat = 1 + 0.18 * Math.max(0, Math.sin(au * 7)); eyes.forEach((e) => e.g.scale.set(beat, beat * 1.05, 1.05 * beat)); }
+      }
+    } else if (facing.rotation.z) facing.rotation.z = 0;
+    if (wantHeart !== heartOn) { heartOn = wantHeart; eyes.forEach((e) => { e.disc.material.map = heartOn ? e.heartTex : e.tex; e.disc.material.needsUpdate = true; e.hl.visible = !heartOn; e.halo.material.color.set(heartOn ? 0xff9ad0 : 0xffffff); }); }
+    renderer.render(scene, camera);
+  };
+  requestAnimationFrame(frame);
+}
+</script>
+<script type="module">
+// Блок «Минута покоя»: наш робот сам живёт в небольшой панели: ходит, дышит, смотрит на облако, дремлет, потягивается.
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const panel = document.querySelector('.footer__walk');
+if (panel) {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.createElement('canvas'); canvas.className = 'relax__canvas'; canvas.setAttribute('aria-hidden', 'true'); panel.appendChild(canvas);
+    const sin = Math.sin, abs = Math.abs, PI = Math.PI;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { canvas.remove(); renderer = null; }
+  if (renderer) {
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); renderer.setClearColor(0x000000, 0);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
+    const scene = new THREE.Scene(), Z = 12, camera = new THREE.PerspectiveCamera(40, 1, 0.1, 80); camera.position.set(0, 0, Z);
+    const actor = new THREE.Group(), facing = new THREE.Group(); scene.add(actor); actor.add(facing); facing.rotation.y = -PI / 2;
+    const bones = {}, eyes = []; let ready = false, mouth = null;
+    (function () {
+      const env = new THREE.Scene();
+      env.add(new THREE.Mesh(new THREE.BoxGeometry(30, 30, 30), new THREE.MeshBasicMaterial({ color: 0xb9b5cf, side: THREE.BackSide })));
+      [[0xffffff, [0, 12, 2], [14, 0.5, 8]], [0xff8fe0, [-11, 2, 4], [0.5, 9, 9]], [0x7ff0ff, [11, 0, 3], [0.5, 9, 9]], [0xb79cff, [0, -10, 4], [16, 0.5, 8]], [0xfff0a8, [0, 3, -12], [14, 9, 0.5]], [0xffffff, [4, 2, 12], [8, 6, 0.5]]]
+        .forEach(([c, p, s]) => { const m = new THREE.Mesh(new THREE.BoxGeometry(...s), new THREE.MeshBasicMaterial({ color: c })); m.position.set(...p); env.add(m); });
+      const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(env, 0.02).texture; pm.dispose();
+    })();
+    const shadow = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 4, 64, 64, 62); g.addColorStop(0, 'rgba(60,50,110,0.28)'); g.addColorStop(1, 'rgba(60,50,110,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128);
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(2, 0.5), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false })); m.position.z = -0.5; scene.add(m); return m; })();
+    const loadGlb = () => new Promise((res, rej) => { if (window.RITM_GLB) return res(); const s = document.createElement('script'); s.src = 'assets/robot-glb.js'; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+    loadGlb().then(() => {
+      const bin = atob(window.RITM_GLB), u8 = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+      new GLTFLoader().parse(u8.buffer, '', (gltf) => {
+        const model = gltf.scene; model.position.y = 0.5;
+        model.traverse((n) => { if (n.isBone) bones[n.name] = n;
+          if (n.isSkinnedMesh) { n.frustumCulled = false; const old = n.material;
+            n.material = new THREE.MeshPhysicalMaterial({ map: old.map, color: 0xffffff, metalness: 0.2, roughness: 0.25, iridescence: 1.0, iridescenceIOR: 1.6, iridescenceThicknessRange: [250, 700], clearcoat: 0.6, clearcoatRoughness: 0.15, envMapIntensity: 1.4 });
+            if (n.material.map) n.material.map.colorSpace = THREE.SRGBColorSpace; } });
+        // ноги: отдельных костей в модели нет, делаем две и привязываем к ним нижнюю часть тела
+        model.updateMatrixWorld(true);
+        const HIP = -0.3, mkLeg = (z) => { const b = new THREE.Bone(); b.position.set(0, HIP, z); bones.body.add(b); return b; };
+        bones.legL = mkLeg(0.1); bones.legR = mkLeg(-0.1);
+        model.traverse((n) => { if (!n.isSkinnedMesh) return;
+          const sk = n.skeleton, bodyIdx = sk.bones.indexOf(bones.body), base = sk.bones.length;
+          const bi = [bones.legL, bones.legR].map((b) => new THREE.Matrix4().makeTranslation(b.position.x, b.position.y, b.position.z).invert().multiply(sk.boneInverses[bodyIdx]));
+          const ns = new THREE.Skeleton([...sk.bones, bones.legL, bones.legR], [...sk.boneInverses, ...bi]);
+          const pos = n.geometry.attributes.position, si = n.geometry.attributes.skinIndex, sw = n.geometry.attributes.skinWeight;
+          for (let v = 0; v < pos.count; v++) {
+            const y = pos.getY(v), z = pos.getZ(v);
+            if (y > HIP + 0.04 || sw.getX(v) < 0.99 || si.getX(v) !== bodyIdx) continue;
+            const lw = Math.min(1, (HIP + 0.04 - y) / 0.08), side = Math.min(1, Math.max(0, 0.5 + z / 0.1)), j = side > 0.5 ? base : base + 1, q = Math.abs(side - 0.5) * 2, wl = lw * (0.5 + 0.5 * q);
+            si.setXYZW(v, j, bodyIdx, 0, 0); sw.setXYZW(v, wl, 1 - wl, 0, 0); }
+          si.needsUpdate = true; sw.needsUpdate = true; n.bind(ns, n.bindMatrix); });
+        const NECK = -0.075, FX = 0.232, face = new THREE.Group(); face.position.set(0, -NECK, 0); bones.head.add(face);
+        const rrect = (w, h, r) => { const sh = new THREE.Shape(), x = -w / 2, y = -h / 2; sh.moveTo(x + r, y); sh.lineTo(x + w - r, y); sh.quadraticCurveTo(x + w, y, x + w, y + r); sh.lineTo(x + w, y + h - r); sh.quadraticCurveTo(x + w, y + h, x + w - r, y + h); sh.lineTo(x + r, y + h); sh.quadraticCurveTo(x, y + h, x, y + h - r); sh.lineTo(x, y + r); sh.quadraticCurveTo(x, y, x + r, y); return new THREE.ShapeGeometry(sh); };
+        const pnl = new THREE.Mesh(rrect(0.40, 0.31, 0.05), new THREE.MeshPhysicalMaterial({ color: 0x040509, roughness: 0.12, metalness: 0, clearcoat: 0.8, clearcoatRoughness: 0.08, envMapIntensity: 0.35 }));
+        pnl.rotation.y = PI / 2; pnl.position.set(FX, 0.155, 0); face.add(pnl);
+        const mk = (stops, size = 128) => { const c = document.createElement('canvas'); c.width = c.height = size; const x = c.getContext('2d'), g = x.createRadialGradient(size / 2, size / 2, 4, size / 2, size / 2, size / 2 - 2); stops.forEach(([o, col]) => g.addColorStop(o, col)); x.fillStyle = g; x.fillRect(0, 0, size, size); return new THREE.CanvasTexture(c); };
+        const glowTex = mk([[0, 'rgba(120,255,225,0.85)'], [0.35, 'rgba(94,242,208,0.35)'], [1, 'rgba(94,242,208,0)']]);
+        const eyeTex = mk([[0, 'rgba(235,255,250,1)'], [0.6, 'rgba(140,248,225,1)'], [0.9, 'rgba(94,242,208,0.9)'], [1, 'rgba(94,242,208,0)']]);
+        const heartTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); const g = x.createRadialGradient(64, 56, 6, 64, 64, 62); g.addColorStop(0, '#fff0f6'); g.addColorStop(0.55, '#ff9ccc'); g.addColorStop(1, 'rgba(255,120,180,0)');
+          x.fillStyle = g; x.beginPath(); x.moveTo(64, 104); x.bezierCurveTo(8, 66, 20, 18, 64, 44); x.bezierCurveTo(108, 18, 120, 66, 64, 104); x.fill(); return new THREE.CanvasTexture(c); })();
+        const EY = 0.165, EZ = 0.108;
+        [-1, 1].forEach((sd) => { const g = new THREE.Group(); g.position.set(0, EY, sd * EZ); face.add(g);
+          const disc = new THREE.Mesh(new THREE.CircleGeometry(0.05, 48), new THREE.MeshBasicMaterial({ map: eyeTex, transparent: true, depthWrite: false, toneMapped: false })); disc.rotation.y = PI / 2; disc.position.x = FX + 0.003; g.add(disc);
+          const hl = new THREE.Mesh(new THREE.CircleGeometry(0.011, 20), new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false })); hl.rotation.y = PI / 2; hl.position.set(FX + 0.0045, 0.017, 0.016); g.add(hl);
+          const halo = new THREE.Mesh(new THREE.CircleGeometry(0.115, 32), new THREE.MeshBasicMaterial({ map: glowTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false })); halo.rotation.y = PI / 2; halo.position.x = FX + 0.0015; g.add(halo);
+          eyes.push({ g, y0: EY, z0: sd * EZ, halo, disc, hl, tex: eyeTex, heartTex }); });
+        const mg = new THREE.TorusGeometry(0.034, 0.0065, 8, 28, PI); mg.rotateZ(PI);
+        mouth = new THREE.Mesh(mg, new THREE.MeshBasicMaterial({ color: 0x9ff8e6, toneMapped: false })); mouth.rotation.y = PI / 2; mouth.position.set(FX + 0.003, 0.118, 0); face.add(mouth);
+        facing.add(model); ready = true;
+      }, () => canvas.remove());
+    }, () => canvas.remove());
+
+    // сценарий «день по Ритму»: робот сам делает то, что умеет продукт. Поливает росток (привычки), пьёт воду по напоминанию,
+    // сидит в фокус-блоке, делает паузу, к вечеру засыпает.
+    // идёт по верхнему краю подвала и время от времени делает что-нибудь: машет, кружится, прыгает, оглядывается
+    const ease = (v) => v * v * (3 - 2 * v);
+    const st = { x: 0, dir: 1, dt: 0.016, init: false, mode: 'walk', until: 0, wt: 0, act: 'wave', last: '' };
+    const ACTS = { wave: 3.8, spin: 2.4, jump: 2.6, look: 3.6, heart: 3.6 };
+    function pose(t, Wp, CH) {
+      const lim = Wp * 0.44, sp = CH * 0.55;
+      if (!st.init) { st.x = -lim; st.dir = 1; st.init = true; st.until = t + 4 + Math.random() * 3; }
+      if (st.mode === 'walk') {
+        st.x += st.dir * sp * st.dt;
+        if (st.x > lim) { st.x = lim; st.dir = -1; } if (st.x < -lim) { st.x = -lim; st.dir = 1; }
+        if (t > st.until) { const names = Object.keys(ACTS).filter((n) => n !== st.last); st.act = names[(Math.random() * names.length) | 0]; st.last = st.act; st.mode = 'act'; st.wt = t; st.until = t + ACTS[st.act]; }
+        const w = sin(st.x / (CH * 0.3) * PI);
+        return { yaw: st.dir * 1.5, hop: abs(w) * 0.03, legL: w * 0.5, legR: -w * 0.5, armLz: w * 0.6, armRz: -w * 0.6, headZ: abs(w) * 0.03 };
+      }
+      const u = t - st.wt, d = ACTS[st.act];
+      if (t > st.until) { st.mode = 'walk'; st.until = t + 5 + Math.random() * 6; }
+      switch (st.act) {
+        case 'wave': { const wave = u > 0.9 && u < 3.0; return { yaw: 0.15, headY: 0.05, armLx: wave ? -(1.15 + sin(t * 13) * 0.3) : 0, glad: wave ? 1.18 : 1, sq: sin(t * 1.7) * 0.012, mouthR: wave ? 1.2 : 1 }; }
+        case 'spin': { const f = Math.min(1, Math.max(0, (u - 0.3) / 1.6)); return { yaw: 0.15, spin: 2 * PI * ease(f) * st.dir * -1, armLx: -1.3, armRx: 1.3, hop: Math.sin(f * PI) * 0.04, glad: 1.12 }; }
+        case 'jump': { const j = (n) => Math.max(0, sin(Math.min(1, Math.max(0, (u - 0.2 - n * 1.0) / 0.9)) * PI)); const air = Math.max(j(0), j(1)), crouch = (u < 0.25 || (u > 0.95 && u < 1.2)) ? -0.07 : 0;
+          return { yaw: 0.15, hop: air * 0.3, armLx: -air * 1.6, armRx: air * 1.6, legL: air * 0.3, legR: -air * 0.3, sq: crouch + air * 0.04, glad: 1 + air * 0.2 }; }
+        case 'heart': { const b = Math.max(0, sin(u * 7)); return { yaw: 0.15, heart: u > 0.3 && u < 3.1, headZ: sin(u * 3.5) * 0.12, hop: b * 0.03, glad: 1.12, sq: b * 0.02, armLx: -0.35, armRx: 0.35 }; }
+        case 'look': return { yaw: 0.15, headY: sin(u * 2.2) * 0.8, headZ: -0.05, glad: 1.05, sq: sin(t * 1.7) * 0.012 };
+      }
+      return {};
+    }
+    const cur = {}, KEYS = ['yaw', 'hop', 'legL', 'legR', 'armLx', 'armLz', 'armRx', 'armRz', 'headY', 'headZ', 'headX', 'glad', 'lid', 'sq', 'mouthR'];
+    KEYS.forEach((k) => { cur[k] = (k === 'glad' || k === 'lid' || k === 'mouthR') ? 1 : 0; });
+    let Wp = 1, Hp = 1, S = 1, vis = false, last = performance.now(), t0 = last, blink = 0, nextBlink = 2;
+    const resize = () => { Wp = panel.clientWidth; Hp = panel.clientHeight; renderer.setSize(Wp, Hp, false); camera.aspect = Wp / Hp; camera.updateProjectionMatrix(); S = 2 * Math.tan(THREE.MathUtils.degToRad(20)) * Z / Hp; };
+    new ResizeObserver(resize).observe(panel); resize();
+    new IntersectionObserver((e) => { vis = e[0].isIntersecting; }).observe(panel);
+    const frame = (now) => {
+      requestAnimationFrame(frame);
+      if (!ready || !vis || document.hidden) { last = now; return; }
+      const dt = Math.min(0.05, (now - last) / 1000), t = (now - t0) / 1000; last = now;
+      const CH = Hp * 0.62, feet = Hp * 0.88;   // ноги выше нижнего края холста: влезают ступни и тень
+      st.dt = dt; st.zzz = false;
+      const tg = reduce ? { yaw: 0.2 } : pose(t, Wp, CH);
+      const k = 1 - Math.exp(-dt * 9);
+      KEYS.forEach((key) => { const d = (key === 'glad' || key === 'lid' || key === 'mouthR') ? 1 : 0, v = tg[key] != null ? tg[key] : d; cur[key] += (v - cur[key]) * k; });
+      const px = Wp / 2 + st.x;
+      actor.scale.setScalar(CH * S);
+      // камера всегда смотрит прямо на робота (без перспективного растяжения у краёв), а в кадре его сдвигает смещение вида
+      camera.setViewOffset(Wp, Hp, Wp / 2 - px, 0, Wp, Hp);
+      actor.position.set(0, (Hp / 2 - feet) * S + cur.hop * CH * S, 0);
+      shadow.position.set(0, (Hp / 2 - feet) * S - 0.02, 0); shadow.scale.setScalar(CH * S * 0.62 * (1 - cur.hop * 0.8));
+      facing.rotation.y = -PI / 2 + cur.yaw + (tg.spin || 0); facing.scale.set(1 - cur.sq * 0.6, 1 + cur.sq, 1 - cur.sq * 0.6);
+      const { head, antenna, armL, armR, legL, legR } = bones;
+      head.rotation.y = cur.headY; head.rotation.z = cur.headZ; head.rotation.x = cur.headX;
+      legL.rotation.z = cur.legL; legL.position.y = -0.3 + Math.max(0, cur.legL) * 0.1; legR.rotation.z = cur.legR; legR.position.y = -0.3 + Math.max(0, cur.legR) * 0.1;
+      armL.rotation.x = cur.armLx; armL.rotation.z = cur.armLz; armR.rotation.x = cur.armRx; armR.rotation.z = cur.armRz;
+      antenna.rotation.z = sin(t * 2.4) * 0.12 + (tg.antennaDrop ? -0.5 : 0) + (tg.antennaUp ? 0.3 : 0); antenna.rotation.x = Math.cos(t * 1.9) * 0.1;
+      nextBlink -= dt; if (nextBlink < 0) { blink = 1; nextBlink = 2 + Math.random() * 3; } blink = Math.max(0, blink - dt * 7);
+      const lid = Math.max(0.05, cur.lid * (1 - sin(blink * PI) * 0.9)), lu = tg.lookUp || 0;
+      const hr = !!tg.heart, beat = 1 + (hr ? 0.18 * Math.max(0, sin(t * 7)) : 0);
+      eyes.forEach((e) => { e.g.position.y = e.y0 + lu * 0.02; e.g.scale.set(beat, (hr ? 1 : lid) * cur.glad * beat, cur.glad); e.disc.material.map = hr ? e.heartTex : e.tex; e.disc.material.needsUpdate = true; e.hl.visible = !hr; e.halo.material.color.set(hr ? 0xff9ad0 : 0xffffff); e.halo.material.opacity = 0.8 + sin(t * 2.2) * 0.05; });
+      mouth.scale.set(1, cur.glad * cur.mouthR, 1);
+      renderer.render(scene, camera);
+    };
+    requestAnimationFrame(frame);
+  }
+}
+</script>
+<script type="module">
+// Помощник в демо: стоит рядом с подсказкой и реагирует на отметки дел (машет, подпрыгивает, сердечки, грустит). Реакции запускает demo.js через window.__demoBot.react(имя).
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const panel = document.querySelector('#demoBot');
+if (panel) {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.createElement('canvas'); canvas.className = 'demo__botcanvas'; canvas.setAttribute('aria-hidden', 'true'); panel.appendChild(canvas);
+    const sin = Math.sin, abs = Math.abs, PI = Math.PI;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { canvas.remove(); renderer = null; }
+  if (renderer) {
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); renderer.setClearColor(0x000000, 0);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
+    const scene = new THREE.Scene(), Z = 12, camera = new THREE.PerspectiveCamera(40, 1, 0.1, 80); camera.position.set(0, 0, Z);
+    const actor = new THREE.Group(), facing = new THREE.Group(); scene.add(actor); actor.add(facing); facing.rotation.y = -PI / 2;
+    const bones = {}, eyes = []; let ready = false, mouth = null;
+    (function () {
+      const env = new THREE.Scene();
+      env.add(new THREE.Mesh(new THREE.BoxGeometry(30, 30, 30), new THREE.MeshBasicMaterial({ color: 0xb9b5cf, side: THREE.BackSide })));
+      [[0xffffff, [0, 12, 2], [14, 0.5, 8]], [0xff8fe0, [-11, 2, 4], [0.5, 9, 9]], [0x7ff0ff, [11, 0, 3], [0.5, 9, 9]], [0xb79cff, [0, -10, 4], [16, 0.5, 8]], [0xfff0a8, [0, 3, -12], [14, 9, 0.5]], [0xffffff, [4, 2, 12], [8, 6, 0.5]]]
+        .forEach(([c, p, s]) => { const m = new THREE.Mesh(new THREE.BoxGeometry(...s), new THREE.MeshBasicMaterial({ color: c })); m.position.set(...p); env.add(m); });
+      const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(env, 0.02).texture; pm.dispose();
+    })();
+    const shadow = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 4, 64, 64, 62); g.addColorStop(0, 'rgba(60,50,110,0.28)'); g.addColorStop(1, 'rgba(60,50,110,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128);
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(2, 0.5), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false })); m.position.z = -0.5; scene.add(m); return m; })();
+    const loadGlb = () => new Promise((res, rej) => { if (window.RITM_GLB) return res(); const s = document.createElement('script'); s.src = 'assets/robot-glb.js'; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+    loadGlb().then(() => {
+      const bin = atob(window.RITM_GLB), u8 = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+      new GLTFLoader().parse(u8.buffer, '', (gltf) => {
+        const model = gltf.scene; model.position.y = 0.5;
+        model.traverse((n) => { if (n.isBone) bones[n.name] = n;
+          if (n.isSkinnedMesh) { n.frustumCulled = false; const old = n.material;
+            n.material = new THREE.MeshPhysicalMaterial({ map: old.map, color: 0xffffff, metalness: 0.2, roughness: 0.25, iridescence: 1.0, iridescenceIOR: 1.6, iridescenceThicknessRange: [250, 700], clearcoat: 0.6, clearcoatRoughness: 0.15, envMapIntensity: 1.4 });
+            if (n.material.map) n.material.map.colorSpace = THREE.SRGBColorSpace; } });
+        // ноги: отдельных костей в модели нет, делаем две и привязываем к ним нижнюю часть тела
+        model.updateMatrixWorld(true);
+        const HIP = -0.3, mkLeg = (z) => { const b = new THREE.Bone(); b.position.set(0, HIP, z); bones.body.add(b); return b; };
+        bones.legL = mkLeg(0.1); bones.legR = mkLeg(-0.1);
+        model.traverse((n) => { if (!n.isSkinnedMesh) return;
+          const sk = n.skeleton, bodyIdx = sk.bones.indexOf(bones.body), base = sk.bones.length;
+          const bi = [bones.legL, bones.legR].map((b) => new THREE.Matrix4().makeTranslation(b.position.x, b.position.y, b.position.z).invert().multiply(sk.boneInverses[bodyIdx]));
+          const ns = new THREE.Skeleton([...sk.bones, bones.legL, bones.legR], [...sk.boneInverses, ...bi]);
+          const pos = n.geometry.attributes.position, si = n.geometry.attributes.skinIndex, sw = n.geometry.attributes.skinWeight;
+          for (let v = 0; v < pos.count; v++) {
+            const y = pos.getY(v), z = pos.getZ(v);
+            if (y > HIP + 0.04 || sw.getX(v) < 0.99 || si.getX(v) !== bodyIdx) continue;
+            const lw = Math.min(1, (HIP + 0.04 - y) / 0.08), side = Math.min(1, Math.max(0, 0.5 + z / 0.1)), j = side > 0.5 ? base : base + 1, q = Math.abs(side - 0.5) * 2, wl = lw * (0.5 + 0.5 * q);
+            si.setXYZW(v, j, bodyIdx, 0, 0); sw.setXYZW(v, wl, 1 - wl, 0, 0); }
+          si.needsUpdate = true; sw.needsUpdate = true; n.bind(ns, n.bindMatrix); });
+        const NECK = -0.075, FX = 0.232, face = new THREE.Group(); face.position.set(0, -NECK, 0); bones.head.add(face);
+        const rrect = (w, h, r) => { const sh = new THREE.Shape(), x = -w / 2, y = -h / 2; sh.moveTo(x + r, y); sh.lineTo(x + w - r, y); sh.quadraticCurveTo(x + w, y, x + w, y + r); sh.lineTo(x + w, y + h - r); sh.quadraticCurveTo(x + w, y + h, x + w - r, y + h); sh.lineTo(x + r, y + h); sh.quadraticCurveTo(x, y + h, x, y + h - r); sh.lineTo(x, y + r); sh.quadraticCurveTo(x, y, x + r, y); return new THREE.ShapeGeometry(sh); };
+        const pnl = new THREE.Mesh(rrect(0.40, 0.31, 0.05), new THREE.MeshPhysicalMaterial({ color: 0x040509, roughness: 0.12, metalness: 0, clearcoat: 0.8, clearcoatRoughness: 0.08, envMapIntensity: 0.35 }));
+        pnl.rotation.y = PI / 2; pnl.position.set(FX, 0.155, 0); face.add(pnl);
+        const mk = (stops, size = 128) => { const c = document.createElement('canvas'); c.width = c.height = size; const x = c.getContext('2d'), g = x.createRadialGradient(size / 2, size / 2, 4, size / 2, size / 2, size / 2 - 2); stops.forEach(([o, col]) => g.addColorStop(o, col)); x.fillStyle = g; x.fillRect(0, 0, size, size); return new THREE.CanvasTexture(c); };
+        const glowTex = mk([[0, 'rgba(120,255,225,0.85)'], [0.35, 'rgba(94,242,208,0.35)'], [1, 'rgba(94,242,208,0)']]);
+        const eyeTex = mk([[0, 'rgba(235,255,250,1)'], [0.6, 'rgba(140,248,225,1)'], [0.9, 'rgba(94,242,208,0.9)'], [1, 'rgba(94,242,208,0)']]);
+        const heartTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); const g = x.createRadialGradient(64, 56, 6, 64, 64, 62); g.addColorStop(0, '#fff0f6'); g.addColorStop(0.55, '#ff9ccc'); g.addColorStop(1, 'rgba(255,120,180,0)');
+          x.fillStyle = g; x.beginPath(); x.moveTo(64, 104); x.bezierCurveTo(8, 66, 20, 18, 64, 44); x.bezierCurveTo(108, 18, 120, 66, 64, 104); x.fill(); return new THREE.CanvasTexture(c); })();
+        const EY = 0.165, EZ = 0.108;
+        [-1, 1].forEach((sd) => { const g = new THREE.Group(); g.position.set(0, EY, sd * EZ); face.add(g);
+          const disc = new THREE.Mesh(new THREE.CircleGeometry(0.05, 48), new THREE.MeshBasicMaterial({ map: eyeTex, transparent: true, depthWrite: false, toneMapped: false })); disc.rotation.y = PI / 2; disc.position.x = FX + 0.003; g.add(disc);
+          const hl = new THREE.Mesh(new THREE.CircleGeometry(0.011, 20), new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false })); hl.rotation.y = PI / 2; hl.position.set(FX + 0.0045, 0.017, 0.016); g.add(hl);
+          const halo = new THREE.Mesh(new THREE.CircleGeometry(0.115, 32), new THREE.MeshBasicMaterial({ map: glowTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false })); halo.rotation.y = PI / 2; halo.position.x = FX + 0.0015; g.add(halo);
+          eyes.push({ g, y0: EY, z0: sd * EZ, halo, disc, hl, tex: eyeTex, heartTex }); });
+        const mg = new THREE.TorusGeometry(0.034, 0.0065, 8, 28, PI); mg.rotateZ(PI);
+        mouth = new THREE.Mesh(mg, new THREE.MeshBasicMaterial({ color: 0x9ff8e6, toneMapped: false })); mouth.rotation.y = PI / 2; mouth.position.set(FX + 0.003, 0.118, 0); face.add(mouth);
+        facing.add(model); ready = true;
+      }, () => canvas.remove());
+    }, () => canvas.remove());
+
+    // сценарий «день по Ритму»: робот сам делает то, что умеет продукт. Поливает росток (привычки), пьёт воду по напоминанию,
+    // сидит в фокус-блоке, делает паузу, к вечеру засыпает.
+    // реакции на отметки дел
+    const ease = (v) => v * v * (3 - 2 * v);
+    const DUR = { wave: 1.9, hop: 1.1, heart: 3.4, sad: 1.5 };
+    let act = null; const mouse = { x: 0, y: 0, on: false };
+    addEventListener('pointermove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.on = true; });
+    window.__demoBot = { react: (name) => { if (reduce || !DUR[name]) return; act = { name, t0: performance.now() / 1000 }; } };
+    const st = { dt: 0.016 };
+    function pose(t, look) {
+      const base = { yaw: look.x * 0.3, headY: look.x * 0.3, headZ: look.y * 0.2, sq: sin(t * 1.7) * 0.012, armRx: sin(t * 1.5) * 0.02 };
+      if (!act) return base;
+      const u = t - act.t0, d = DUR[act.name];
+      if (u > d) { act = null; return base; }
+      switch (act.name) {
+        case 'wave': return { yaw: 0, headY: 0.05, armLx: -(1.15 + sin(u * 13) * 0.3), glad: 1.2, mouthR: 1.2, sq: sin(t * 1.7) * 0.012 };
+        case 'hop': { const j = Math.max(0, sin(Math.min(1, u / 0.95) * PI)); return { yaw: 0, hop: j * 0.3, armLx: -j * 1.6, armRx: j * 1.6, legL: j * 0.3, legR: -j * 0.3, glad: 1 + j * 0.2, sq: (u < 0.15 ? -0.06 : 0) + j * 0.04 }; }
+        case 'heart': { const f = Math.min(1, Math.max(0, (u - 0.4) / 1.6)); const b = Math.max(0, sin(u * 7)); return { yaw: 0, spin: 2 * PI * ease(f), heart: u > 0.25 && u < d - 0.3, hop: b * 0.03 + Math.sin(f * PI) * 0.05, armLx: -0.4, armRx: 0.4, glad: 1.12 }; }
+        case 'sad': return { yaw: 0, headZ: -0.35, sq: -0.03, lid: 0.55, glad: 0.8, antennaDrop: 1, armLx: -0.05, armRx: 0.05 };
+      }
+      return base;
+    }
+    const cur = {}, KEYS = ['yaw', 'hop', 'legL', 'legR', 'armLx', 'armLz', 'armRx', 'armRz', 'headY', 'headZ', 'headX', 'glad', 'lid', 'sq', 'mouthR'];
+    KEYS.forEach((k) => { cur[k] = (k === 'glad' || k === 'lid' || k === 'mouthR') ? 1 : 0; });
+    let Wp = 1, Hp = 1, S = 1, vis = false, last = performance.now(), t0 = last, blink = 0, nextBlink = 2;
+    const resize = () => { Wp = panel.clientWidth; Hp = panel.clientHeight; renderer.setSize(Wp, Hp, false); camera.aspect = Wp / Hp; camera.updateProjectionMatrix(); S = 2 * Math.tan(THREE.MathUtils.degToRad(20)) * Z / Hp; };
+    new ResizeObserver(resize).observe(panel); resize();
+    new IntersectionObserver((e) => { vis = e[0].isIntersecting; }).observe(panel);
+    const frame = (now) => {
+      requestAnimationFrame(frame);
+      if (!ready || !vis || document.hidden) { last = now; return; }
+      const dt = Math.min(0.05, (now - last) / 1000), t = (now - t0) / 1000; last = now;
+      const CH = Wp * 0.91, feet = Hp - Wp * 0.114;   // размеры от ширины холста: холст выше робота, чтобы прыжок шёл над графиком
+      const br = panel.getBoundingClientRect(), look = mouse.on ? { x: Math.max(-1, Math.min(1, (mouse.x - (br.left + br.width / 2)) / 700)), y: Math.max(-1, Math.min(1, -(mouse.y - (br.top + br.height * 0.6)) / 500)) } : { x: Math.sin(t * 0.6) * 0.4, y: 0 };
+      const tg = reduce ? { yaw: 0 } : pose(t, look);
+      const k = 1 - Math.exp(-dt * 9);
+      KEYS.forEach((key) => { const d = (key === 'glad' || key === 'lid' || key === 'mouthR') ? 1 : 0, v = tg[key] != null ? tg[key] : d; cur[key] += (v - cur[key]) * k; });
+      actor.scale.setScalar(CH * S);
+      actor.position.set(0, (Hp / 2 - feet) * S + cur.hop * CH * S, 0);
+      shadow.position.set(0, (Hp / 2 - feet) * S - 0.02, 0); shadow.scale.setScalar(CH * S * 0.62 * (1 - cur.hop * 0.8));
+      facing.rotation.y = -PI / 2 + cur.yaw + (tg.spin || 0); facing.scale.set(1 - cur.sq * 0.6, 1 + cur.sq, 1 - cur.sq * 0.6);
+      const { head, antenna, armL, armR, legL, legR } = bones;
+      head.rotation.y = cur.headY; head.rotation.z = cur.headZ; head.rotation.x = cur.headX;
+      legL.rotation.z = cur.legL; legL.position.y = -0.3 + Math.max(0, cur.legL) * 0.1; legR.rotation.z = cur.legR; legR.position.y = -0.3 + Math.max(0, cur.legR) * 0.1;
+      armL.rotation.x = cur.armLx; armL.rotation.z = cur.armLz; armR.rotation.x = cur.armRx; armR.rotation.z = cur.armRz;
+      antenna.rotation.z = sin(t * 2.4) * 0.12 + (tg.antennaDrop ? -0.5 : 0); antenna.rotation.x = Math.cos(t * 1.9) * 0.1;
+      nextBlink -= dt; if (nextBlink < 0) { blink = 1; nextBlink = 2 + Math.random() * 3; } blink = Math.max(0, blink - dt * 7);
+      const lid = Math.max(0.05, cur.lid * (1 - sin(blink * PI) * 0.9));
+      const hr = !!tg.heart, beat = 1 + (hr ? 0.18 * Math.max(0, sin(t * 7)) : 0);
+      eyes.forEach((e) => { e.g.scale.set(beat, (hr ? 1 : lid) * cur.glad * beat, cur.glad); e.disc.material.map = hr ? e.heartTex : e.tex; e.disc.material.needsUpdate = true; e.hl.visible = !hr; e.halo.material.color.set(hr ? 0xff9ad0 : 0xffffff); e.halo.material.opacity = 0.8 + sin(t * 2.2) * 0.05; });
+      mouth.scale.set(1, cur.glad * cur.mouthR, 1);
+      renderer.render(scene, camera);
+    };
+    requestAnimationFrame(frame);
+  }
+}
+</script>
+<script src="hero.js"></script>
+<script src="what.js"></script>
+<script src="features.js"></script>
+<script src="reviews.js"></script>
+<script src="demo.js"></script>
+<script src="steps.js"></script>
+<script src="nav.js"></script>
+<script src="cascade.js"></script>
+</body>
+</html>
