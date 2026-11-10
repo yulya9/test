@@ -23,7 +23,7 @@
     <a href="#reviews">Отзывы</a>
     <a href="#faq">Вопросы</a>
   </nav>
-  <a class="nav-button" href="#demo"><span>Попробовать</span><span class="nav-button__arrow" aria-hidden="true">→</span></a>
+  <a class="nav-button" href="#features"><span>Что он умеет</span><span class="nav-button__arrow" aria-hidden="true">→</span></a>
 </header>
 
 <!-- HeroSection · Figma 497:29 -->
@@ -43,7 +43,7 @@
         <a href="#reviews">Отзывы</a>
         <a href="#faq">Вопросы</a>
       </nav>
-      <a class="nav-button" href="#demo"><span>Попробовать</span><span class="nav-button__arrow" aria-hidden="true">→</span></a>
+      <a class="nav-button" href="#features"><span>Что он умеет</span><span class="nav-button__arrow" aria-hidden="true">→</span></a>
     </header>
 
     <div class="hero__card" aria-hidden="true"><img src="assets/hero_sky.jpg" alt=""><span class="hero__tint"></span></div>
@@ -62,7 +62,7 @@
         <img class="hero__img" src="assets/hero_sky.jpg" alt="" width="380" height="214" fetchpriority="high" decoding="async">
         <div class="hero__right">
           <p class="hero__text">Напоминает про воду, паузы и конец рабочего дня</p>
-          <a class="hero__button" href="#features"><span>Что он умеет</span><span aria-hidden="true">→</span></a>
+          <a class="hero__button" href="#signup" data-open-form><span>Попробовать бесплатно</span><span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -192,8 +192,8 @@
     <h2 class="cta__title">Начните с одного шага, остальное возьмёт Pace</h2>
     <p class="cta__text">Подключите помощника сегодня: он подстроится под ваш день, напомнит о важном и поддержит, когда нужна пауза.</p>
     <div class="cta__buttons">
-      <a class="cta__dark" href="#features"><span>Что он умеет</span><span aria-hidden="true">→</span></a>
-      <a class="cta__glass" href="#demo"><span>Попробовать день</span><span aria-hidden="true">→</span></a>
+      <a class="cta__dark" href="#signup" data-open-form><span>Попробовать бесплатно</span><span aria-hidden="true">→</span></a>
+      <a class="cta__glass" href="#demo"><span>Посмотреть демо</span><span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -623,6 +623,27 @@ if (panel) {
 <script src="reviews.js"></script>
 <script src="demo.js"></script>
 <script src="steps.js"></script>
+<div class="signup" id="signup" role="dialog" aria-modal="true" aria-labelledby="signupTitle" hidden>
+  <div class="signup__backdrop" data-close-form></div>
+  <div class="signup__card">
+    <button class="signup__close" type="button" aria-label="Закрыть" data-close-form>×</button>
+    <form class="signup__form" id="signupForm" novalidate>
+      <h2 class="signup__title" id="signupTitle">Попробуйте Pace бесплатно</h2>
+      <p class="signup__text">Оставьте почту, и мы пришлём доступ к приложению и инструкцию по настройке помощника. Займёт пару минут.</p>
+      <label class="signup__field"><span>Имя</span><input type="text" name="name" autocomplete="given-name" placeholder="Как к вам обращаться" required></label>
+      <label class="signup__field"><span>Почта</span><input type="email" name="email" autocomplete="email" placeholder="name@mail.ru" required></label>
+      <label class="signup__check"><input type="checkbox" name="agree" required><span>Согласен с <a href="#">политикой конфиденциальности</a></span></label>
+      <p class="signup__error" id="signupError" role="alert" hidden></p>
+      <button class="signup__submit" type="submit"><span>Получить доступ</span><span aria-hidden="true">→</span></button>
+    </form>
+    <div class="signup__done" id="signupDone" hidden>
+      <h2 class="signup__title">Готово, письмо уже в пути</h2>
+      <p class="signup__text">Проверьте почту: там доступ и первый шаг. Если письма нет, загляните в «Спам».</p>
+      <button class="signup__submit" type="button" data-close-form><span>Вернуться на сайт</span></button>
+    </div>
+  </div>
+</div>
+<script src="signup.js"></script>
 <script src="nav.js"></script>
 <script src="cascade.js"></script>
 </body>
